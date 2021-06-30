@@ -3,8 +3,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { useState } from "react";
 import UserContext from "../context/UserContext";
 
-import Login from "../pages/Login";
 import SingUp from "../pages/SignUp";
+import SingIn from "../pages/SingIn";
 
 export default function App() {
 
@@ -20,7 +20,7 @@ export default function App() {
                             <SingUp />
                         </Route>
                         <Route path="/" exact>
-                            <Login />
+                            <SingIn />
                         </Route>
                     </UserContext.Provider>
                 </Switch>
