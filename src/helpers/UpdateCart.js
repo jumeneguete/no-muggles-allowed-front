@@ -1,5 +1,4 @@
 import axios from "axios"
-import { useEffect } from "react"
 
 export default function UpdateCart (item) {
     const config = {headers: {"Authorization": `Bearer teste`}}

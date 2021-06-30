@@ -1,6 +1,5 @@
-import axios from "axios"
-import { useContext, useState } from "react"
-import UserContext from "../context/UserContext"
+import { useState } from "react"
+
 import UpdateCart from "../helpers/UpdateCart"
 import {Name, Price, Img, OutlineX, Table, Title} from "../styles/cartStyles"
 
@@ -32,7 +31,7 @@ export default function CartList ({cart, setCart}) {
                         <td onClick={() => {
                             //deleteItem(item)
                             UpdateCart(item)}}><OutlineX /></td>
-                        <Img><img src="teste.png" /></Img>
+                        <Img><img src="teste.png" alt='imagem do produto' /></Img>
                         <Name>{item.productname}</Name>
                         <td>R${item.price}</td>
                         <td>
@@ -43,7 +42,8 @@ export default function CartList ({cart, setCart}) {
                         <Price>R${item.price*quantity}</Price>
                     </tr>
                     </>)}
-            )}
+                )
+            }
             </tbody>
         </Table>
     )

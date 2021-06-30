@@ -54,4 +54,55 @@ const Title = styled.tr`
     background: #fbfbfb;
 `
 
-export {Name, Price, Img, OutlineX, Table, Title}
+const Container = styled.div`
+    width: 100%;
+    margin-top: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    h1{
+        width: 80%;
+        height: 50px;
+        font-size: 40px;
+        margin-left: 10px;
+    }
+    h2 {
+        width: 80%;
+        height: 50px;
+        font-size: 18px;
+        background: #e5e4e2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px 0 20px 0;
+    }
+    p {
+        cursor: pointer
+    }
+`
+const Products = styled.div `
+    width: 80%;
+`
+const Button = styled.div`
+    width: 80%;
+    height: 60px;
+    border: 1px solid #d3d3d3;
+    border-top: none;
+    position: relative;
+    button {
+        width: 200px;
+        height: 40px;
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        border: none;
+        border-radius: 5px;
+        background: #d98d30;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 700;
+    }
+`
+
+export {Name, Price, Img, OutlineX, Table, Title, Container, Products, Button}

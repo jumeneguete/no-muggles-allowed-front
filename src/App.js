@@ -1,6 +1,7 @@
 import GlobalStyle from "./GlobalStyles";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { useState } from "react";
+import { Grommet } from "grommet";
 import Cart from "./pages/Cart";
 import UserContext from "./context/UserContext"
 import Success from "./pages/Success";
@@ -12,6 +13,7 @@ export default function App() {
 
     return (
         <>
+        <Grommet>
             <GlobalStyle />
             <BrowserRouter>
                 <Switch>
@@ -37,6 +39,7 @@ export default function App() {
                     </UserContext.Provider>
                 </Switch>
             </BrowserRouter>
+        </Grommet>
         </>
     );
 }

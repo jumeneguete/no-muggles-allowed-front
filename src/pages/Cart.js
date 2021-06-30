@@ -1,10 +1,8 @@
-import styled from "styled-components"
-import { useContext, useEffect, useState } from "react"
-import UserContext from "../context/UserContext"
+import { useEffect, useState } from "react"
 import axios from "axios"
 import CartList from "../components/CartList"
 import { Link, useHistory } from "react-router-dom"
-
+import { Container, Products, Button } from "../styles/cartStyles"
 
 export default function Cart () {
 
@@ -49,56 +47,3 @@ export default function Cart () {
         </>
     )
 }
-
-
-const Container = styled.div`
-    width: 100%;
-    margin-top: 130px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    h1{
-        width: 80%;
-        height: 50px;
-        font-size: 40px;
-    }
-    h2 {
-        width: 80%;
-        height: 50px;
-        font-size: 18px;
-        background: #dbdbdb;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 10px 0 20px 0;
-    }
-    p {
-        cursor: pointer
-    }
-`
-
-const Products = styled.div `
-    width: 80%;
-`
-
-const Button = styled.div`
-    width: 80%;
-    height: 60px;
-    border: 1px solid #d3d3d3;
-    border-top: none;
-    position: relative;
-    button {
-        width: 200px;
-        height: 40px;
-        position: absolute;
-        right: 15px;
-        top: 10px;
-        border: none;
-        border-radius: 5px;
-        background: #d98d30;
-        color: #fff;
-        font-size: 18px;
-        font-weight: 700;
-    }
-`
