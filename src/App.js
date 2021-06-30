@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { useState } from "react";
 import UserContext from "./contexts/UserContext";
 import Home from "./pages/Home";
+import Products from "./pages/Products";
 
 export default function App() {
 
@@ -16,6 +17,9 @@ export default function App() {
                     <UserContext.Provider value={{ user, setUser }}>
                         <Route path="/" exact>
                             <Home />
+                        </Route>
+                        <Route path="/product/:id" exact>
+                            <Products />
                         </Route>
                         {/* <Route path="/signup" exact>
                             <SignUp />
