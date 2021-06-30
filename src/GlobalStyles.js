@@ -70,6 +70,7 @@ body {
     //font-family: 'Raleway', sans-serif;
     color: #000;
     background-color: #fff;
+	font-family: 'Oxygen', sans-serif;;
 }
 `;
 
