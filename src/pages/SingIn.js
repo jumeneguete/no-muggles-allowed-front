@@ -22,12 +22,11 @@ export default function SingIn() {
                         password
                     }
 
-        const request = axios.post("http://localhost:4000/sign-in", body);
+        const request = axios.post(`${process.env.REACT_APP_HOST}/sign-in`, body);
         setLoading(true);
         request.then((response) => {
             setUser(response.data)
             history.push("/home");
-            setLoading(false);
         });
         request.catch((resp) => {
             if(resp.response.status === 500) {

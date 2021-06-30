@@ -26,7 +26,7 @@ export default function SingUP() {
                         passwordConfirmation
                     }
 
-        const request = axios.post("http://localhost:4000/sign-up", body);
+        const request = axios.post(`${process.env.REACT_APP_HOST}/sign-up`, body);
         setLoading(true);
         request.then(() => {
             history.push("/");
