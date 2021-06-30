@@ -1,6 +1,10 @@
-import GlobalStyle from "../GlobalStyle";
+import GlobalStyle from "../GlobalStyles";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { useState } from "react";
+import UserContext from "../context/UserContext";
+
+import SingUp from "../pages/SignUp";
+import SingIn from "../pages/SingIn";
 
 export default function App() {
 
@@ -12,23 +16,11 @@ export default function App() {
             <BrowserRouter>
                 <Switch>
                     <UserContext.Provider value={{ user, setUser }}>
+                        <Route path="/sign-up" exact>
+                            <SingUp />
+                        </Route>
                         <Route path="/" exact>
-                            <Home />
-                        </Route>
-                        <Route path="/signup" exact>
-                            <SignUp />
-                        </Route>
-                        <Route path="/login" exact>
-                            <Login />
-                        </Route>
-                        <Route path="/cart" exact>
-                            <Cart />
-                        </Route>
-                        <Route path="/userdata" exact>
-                            <UserData />
-                        </Route>
-                        <Route path="/success" exact>
-                            <Success />
+                            <SingIn />
                         </Route>
                     </UserContext.Provider>
                 </Switch>
