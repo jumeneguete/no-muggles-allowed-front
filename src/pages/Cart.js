@@ -11,7 +11,7 @@ export default function Cart () {
     //const {user, setUser} = useContext(UserContext)
 
     useEffect(() => {
-        const config = {headers: {"Authorization": `Bearer teste`}}
+        const config = {headers: {"Authorization": `Bearer test`}}
         const promise = axios.get('http://localhost:4000/cart', config)
         promise.then(response => {
             setCart(response.data)

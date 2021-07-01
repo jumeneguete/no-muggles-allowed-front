@@ -6,6 +6,8 @@ import SingUp from "./pages/SignUp";
 import SingIn from "./pages/SingIn";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 
 export default function App() {
 
@@ -28,6 +30,15 @@ export default function App() {
                         </Route>
                         <Route path="/" exact>
                             <SingIn />
+                        </Route>
+                        <Route path="/cart">
+                            <Cart />
+                        </Route>
+                        <Route path="/checkout">
+                            <Checkout />
+                        </Route>
+                        <Route path="/sucess">
+                            <Cart />
                         </Route>
                     </UserContext.Provider>
                 </Switch>

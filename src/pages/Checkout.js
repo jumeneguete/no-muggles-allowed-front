@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {Title, BoxButton, MyButton, Container} from "../styles/checkoutFormStyles"
 import RenderAddress from "../components/Checkout/RenderAdress"
 import CheckoutForm from '../components/Checkout/CheckoutForm'
@@ -7,6 +7,7 @@ import saveCard from '../helpers/Checkout/saveCard'
 import SelectPayment from '../components/Checkout/SelectPayment';
 import RenderCard from '../components/Checkout/RenderCard';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Checkout () {
 
@@ -32,6 +33,14 @@ export default function Checkout () {
     function finishOrder () {
         history.push('/sucess')
     }
+
+    useEffect (() => {
+        const request = axios.get("http://localhost:4000/", config)
+        request.then(response => {
+            console.log(response.data)
+        })
+    }
+    , []);
 
     return (
         <Container>
