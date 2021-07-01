@@ -1,15 +1,87 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { DebounceInput } from 'react-debounce-input';
+
+const SearchStyle = styled.div`
+    display: flex;
+    flex-direction: column;
+    position: relative;
+   
+`;
+
+const StyledInput = styled(DebounceInput)`
+    width: 350px;
+    height: 35px;
+    border:none;
+    border-radius: ${props => props.searching ? "5px 5px 0 0" : "5px"};
+    box-shadow: 0;
+    padding: 20px 10px;
+
+    @media (max-width: 640px) {
+        width: 90vw;
+    }
 
 
-const Header = styled.div`
-width: 100%;
-height: 80px;
-position: fixed;
-top:0;
-left: 0;
-right: 0;
-background-color: #184059;
+    &:focus{
+        box-shadow: 0 0 0 0;
+        outline: 0;
+    }
+
+    &::placeholder {
+        font-family: "Lato", sans-serif;
+        font-size: 15px;
+        color: #C6C6C6;
+    }
+
+`;
+
+const Suggestions = styled.div`
+    width: 100%;
+    background-color: whitesmoke;
+    border-radius: 0 0 5px 5px;
+    position: absolute;
+    top:40px;
+    left: 0;
+    display: ${props => props.searching ? "block" : "none"};
+`;
+
+const NotFound = styled.div`
+    width: 100%;
+    padding: 20px;
+    font-style: italic;
+    color: #7f7f7f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const ProductSearched = styled.div`
+    padding: 15px 0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 40px;
+        height: 40px;
+        border-radius: 5px;
+        margin-left: 10px;
+        object-fit: cover;
+        margin-right: 13px;
+    }
+
+    p {
+        max-width: 170px;
+        color:#515151;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    span {
+        margin-left: 10px;
+        color: #000;
+    }
 `;
 
 const Banner = styled.div`
@@ -122,4 +194,4 @@ const Monthly = styled.div`
    margin: 0 auto 30px auto;
 `;
 
-export { Header, Banner, Main, Title, DisplayProducts, SingleProduct, StyledButton, Price, Monthly };
+export { SearchStyle, StyledInput, Suggestions, NotFound, ProductSearched, Banner, Main, Title, DisplayProducts, SingleProduct, StyledButton, Price, Monthly };

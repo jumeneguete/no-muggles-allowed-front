@@ -2,15 +2,15 @@ import { useContext, useEffect, useState } from 'react';
 import UserContext from '../contexts/UserContext';
 import Button from '../components/BuyButton';
 import axios from 'axios';
-import { Header, Banner, Main, Title, DisplayProducts, SingleProduct, StyledButton, Price, Monthly } from '../styles/styles'
+import Header from '../components/Header';
+import { Banner, Main, Title, DisplayProducts, SingleProduct, StyledButton, Price, Monthly } from '../styles/styles'
 
 export default function Home() {
-    const { user, setUser } = useContext(UserContext);
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
 
-        const result = axios.get("http://localhost:4000/");
+        const result = axios.get("http://localhost:4000/products");
         result.then(response => {
             setProducts(response.data);
         })
