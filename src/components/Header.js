@@ -18,7 +18,7 @@ export default function Header() {
     const config = { headers: { Authorization: `Bearer ${user}` } }
 
     useEffect(() => {
-        const request = axios.get(`http://localhost:4000/cart`); //colocar o config
+        const request = axios.get(`${process.env.REACT_APP_HOST}/cart`); //colocar o config
         request.then(response => {
             setCart(response.data);
             counter(response.data);

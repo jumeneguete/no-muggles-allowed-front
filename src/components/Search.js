@@ -13,7 +13,7 @@ export default function Search() {
 
     useEffect(() => {
         if (search.length > 1) {
-            const result = axios.get(`http://localhost:4000/products?product=${search}`);
+            const result = axios.get(`${process.env.REACT_APP_HOST}/products?product=${search}`);
             result.then(response => {
                 SetProductFound(response.data);
             })
