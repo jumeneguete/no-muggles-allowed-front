@@ -33,9 +33,9 @@ export default function Header() {
         setTotal(sum);
     }
 
-         function logout() { //onClick no ExitOutline
+         function logout() { 
          const config = { headers: { Authorization: `Bearer ${user}` } }
-         axios.post(`http://localhost:4000/logout`, config);
+         axios.post(`${process.env.REACT_APP_HOST}/sign-out`, config);
         localStorage.removeItem("lastLogin");
         setUser(null);
         history.push("/");
