@@ -1,7 +1,6 @@
 import axios from "axios";
-import { useState, useContext, useEffect } from "react";
+import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import styled from 'styled-components';
 import Harry from '../components/assets/Harry.png';
 import Description from "../components/Login/Banner";
 import { Container, Field, Input, Button } from "../components/Login/loginStyle";
