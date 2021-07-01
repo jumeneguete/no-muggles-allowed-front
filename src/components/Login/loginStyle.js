@@ -156,7 +156,7 @@ const Field = styled.div`
     }
     form {
         width: 40%;
-        height: 345px;
+        height: 545px;
         background-color: #fff;
         display: flex;
         flex-direction: column;

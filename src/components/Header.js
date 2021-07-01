@@ -33,13 +33,13 @@ export default function Header() {
         setTotal(sum);
     }
 
-    // function logout() { //onClick no ExitOutline
-    //     const config = { headers: { Authorization: `Bearer ${user}` } }
-    //     axios.post(`http://localhost:4000/logout`, config);
-    //     localStorage.removeItem("lastLogin");
-    //     setUser(null);
-    //     history.push("/");
-    // }
+         function logout() { //onClick no ExitOutline
+         const config = { headers: { Authorization: `Bearer ${user}` } }
+         axios.post(`http://localhost:4000/logout`, config);
+        localStorage.removeItem("lastLogin");
+        setUser(null);
+        history.push("/");
+     }
 
     return (
         <>
@@ -59,7 +59,7 @@ export default function Header() {
                                     <CartOutline color={'#fff'} height="65px" width="65px" />
                                     <Counter>{total}</Counter>
                                 </Cart>
-                                <ExitOutline color={'#fff'} height="30px" width="30px" />
+                                <ExitOutline onClick={logout} color={'#fff'} height="30px" width="30px" />
                             </> :
                             <Link to="/" className="login">
                                 <p>Login for Wizards only </p>
