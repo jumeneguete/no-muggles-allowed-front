@@ -7,6 +7,9 @@ import UserContext from "./context/UserContext"
 import Success from "./pages/Success";
 import UserData from "./pages/UserData";
 
+import SingUp from "../pages/SignUp";
+import SingIn from "../pages/SingIn";
+
 export default function App() {
 
     const [user,setUser] = useState()
@@ -19,13 +22,10 @@ export default function App() {
                 <Switch>
                     <UserContext.Provider value={{ user, setUser }}>
                         <Route path="/" exact>
-
+                            <SingIn />
                         </Route>
-                        <Route path="/signup" exact>
-
-                        </Route>
-                        <Route path="/login" exact>
-
+                        <Route path="/sign-up" exact>
+                            <SingUp />
                         </Route>
                         <Route path="/cart" exact>
                             <Cart />
