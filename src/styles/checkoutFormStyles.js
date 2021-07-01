@@ -39,7 +39,6 @@ const OptionsPayment = styled(RadioButtonGroup)`
             border: solid 2px #d98d30;
             } 
         }
-        
     }
     width: 80%;
     margin: 10px 0 30px 20px;

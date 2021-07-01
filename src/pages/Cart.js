@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
-import CartList from "../components/CartList"
+import CartList from "../components/Cart/CartList"
 import { Link, useHistory } from "react-router-dom"
 import { Container, Products, Button } from "../styles/cartStyles"
 

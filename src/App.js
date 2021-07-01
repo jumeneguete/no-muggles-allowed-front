@@ -5,10 +5,9 @@ import { Grommet } from "grommet";
 import Cart from "./pages/Cart";
 import UserContext from "./context/UserContext"
 import Success from "./pages/Success";
-import UserData from "./pages/UserData";
-
-import SingUp from "../pages/SignUp";
-import SingIn from "../pages/SingIn";
+import Checkout from "./pages/Checkout";
+import SingUp from "./pages/SignUp";
+import SingIn from "./pages/SingIn";
 
 export default function App() {
 
@@ -31,7 +30,7 @@ export default function App() {
                             <Cart />
                         </Route>
                         <Route path="/checkout" exact>
-                            <UserData />
+                            <Checkout />
                         </Route>
                         <Route path="/success" exact>
                             <Success />

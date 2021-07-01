@@ -1,7 +1,7 @@
 import { useState } from "react"
 
-import UpdateCart from "../helpers/UpdateCart"
-import {Name, Price, Img, OutlineX, Table, Title} from "../styles/cartStyles"
+import {Name, Price, Img, OutlineX, Table, Title} from "../../styles/cartStyles"
+import UpdateCart from "../../helpers/Cart/UpdateCart"
 
 export default function CartList ({cart, setCart}) {
 
