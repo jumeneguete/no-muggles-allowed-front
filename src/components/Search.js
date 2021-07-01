@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import UserContext from "../contexts/UserContext";
+import UserContext from "../context/UserContext";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import ClickAwayListener from 'react-click-away-listener';
-import {SearchStyle, StyledInput, Suggestions, NotFound, ProductSearched} from "../styles/styles"
+import {SearchStyle, StyledInput, Suggestions, NotFound, ProductSearched} from "../styles/homeStyles"
 
 export default function Search() {
     const { user } = useContext(UserContext);

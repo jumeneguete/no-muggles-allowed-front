@@ -2,6 +2,92 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { DebounceInput } from 'react-debounce-input';
 
+const HeaderStyles = styled.header`
+        width: 100%;
+        height: 80px;
+        background-color: #151515;
+        padding: 0 22px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+
+        & > span {
+            font-family: 'Harry Potter', sans-serif;
+            text-align: center;
+            font-size: 27px;
+            line-height: 35px;
+            color: #fff;
+
+        }
+
+        img {
+            height: 70px;
+}
+
+`;
+
+
+const CartLog = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+    .login{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+            font-family: 'Harry Potter', sans-serif;
+            font-size: 18px;
+            color: #fff;
+            margin-right: 10px;
+        }
+
+        img {
+            margin-right: 10px;
+        }
+    }
+`;
+
+const Cart = styled.div`
+            width: 70px;
+            margin-right: 10px;
+            position: relative;
+`;
+
+const Counter = styled.div`
+            width: 25px;
+            height: 25px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top:0;
+            right: 0;
+            background-color: #fff;
+
+`;
+
+const LinkToLogin = styled.span`
+            color: #fff;
+`;
+
+const SearchHeader = styled.div`
+            @media (max-width: 640px) {
+                display: none;
+    }
+
+`;
+
+
 const SearchStyle = styled.div`
     display: flex;
     flex-direction: column;
@@ -107,6 +193,8 @@ const Main = styled.div`
 `;
 
 const Title = styled.div`
+    font-family: 'Harry Potter', sans-serif;
+    letter-spacing: 3px;
    font-size: 40px;
    font-weight: 700;
    color: #184059;
@@ -194,4 +282,4 @@ const Monthly = styled.div`
    margin: 0 auto 30px auto;
 `;
 
-export { SearchStyle, StyledInput, Suggestions, NotFound, ProductSearched, Banner, Main, Title, DisplayProducts, SingleProduct, StyledButton, Price, Monthly };
+export { HeaderStyles, CartLog, Cart, Counter, LinkToLogin, SearchHeader, SearchStyle, StyledInput, Suggestions, NotFound, ProductSearched, Banner, Main, Title, DisplayProducts, SingleProduct, StyledButton, Price, Monthly };

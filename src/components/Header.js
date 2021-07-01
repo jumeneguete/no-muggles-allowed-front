@@ -1,12 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
-import UserContext from "../contexts/UserContext"
+import UserContext from "../context/UserContext"
 import Search from "./Search";
 import { CartOutline } from 'react-ionicons';
 import { ExitOutline } from 'react-ionicons';
 import { LogInOutline } from 'react-ionicons';
 import axios from "axios";
+import {HeaderStyles, CartLog, Cart, Counter, LinkToLogin, SearchHeader} from "../styles/homeStyles"
 
 export default function Header() {
     const [search, setSearch] = useState("");
@@ -43,11 +44,14 @@ export default function Header() {
     return (
         <>
             <HeaderStyles>
-                <span><Link to="/"><img src="assets/img/logo.jpg" title="No Muggles Allowed" alt="No Muggles Allowed" /></Link></span>
+                <span><Link to="/">
+                    NO Muggles <br/> Allowed
+                    {/* <img src="assets/img/logo.jpg" title="No Muggles Allowed" alt="No Muggles Allowed" /> */}
+                    </Link></span>
                 <SearchHeader><Search search={search} setSearch={setSearch} /></SearchHeader>
 
 
-                <Info>
+                <div>
                     <CartLog>
                         {user ?
                             <>
@@ -57,85 +61,15 @@ export default function Header() {
                                 </Cart>
                                 <ExitOutline color={'#fff'} height="30px" width="30px" />
                             </> :
-                            <Link to="/login" className="login">
-                                <img src="assets/img/logo.jpg" title="No Muggles Allowed" alt="No Muggles Allowed" />
+                            <Link to="/" className="login">
+                                <p>Login for Wizards only </p>
+                                {/* <img src="assets/img/logo.jpg" title="No Muggles Allowed" alt="No Muggles Allowed" /> */}
                                 <LogInOutline color={'#fff'} height="30px" width="30px" />
                             </Link>
                         }
                     </CartLog>
-                </Info>
+                </div>
             </HeaderStyles>
         </>
     );
 }
-
-const HeaderStyles = styled.header`
-            width: 100%;
-            height: 80px;
-            background-color: #151515;
-            padding: 0 22px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1;
-
-            img {
-                height: 70px;
-    }
-
-`;
-
-const Info = styled.div`
-`;
-
-const CartLog = styled.div`
-display: flex;
-justify-content: space-between;
-align-items: center;
-
-    .login{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        img {
-            margin-right: 10px;
-        }
-    }
-`;
-
-const Cart = styled.div`
-            width: 70px;
-            margin-right: 10px;
-            position: relative;
-`;
-
-const Counter = styled.div`
-            width: 25px;
-            height: 25px;
-            border-radius: 30px;
-            font-size: 14px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            top:0;
-            right: 0;
-            background-color: #fff;
-
-`;
-
-const LinkToLogin = styled.span`
-            color: #fff;
-`;
-
-const SearchHeader = styled.div`
-            @media (max-width: 640px) {
-                display: none;
-    }
-
-`;

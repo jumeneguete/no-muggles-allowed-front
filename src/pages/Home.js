@@ -1,9 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
-import UserContext from '../contexts/UserContext';
+import { useEffect, useState } from 'react';
 import Button from '../components/BuyButton';
 import axios from 'axios';
 import Header from '../components/Header';
-import { Banner, Main, Title, DisplayProducts, SingleProduct, StyledButton, Price, Monthly } from '../styles/styles'
+import { Banner, Main, Title, DisplayProducts, SingleProduct, StyledButton, Price, Monthly } from '../styles/homeStyles'
 
 export default function Home() {
     const [products, setProducts] = useState([]);
