@@ -8,8 +8,8 @@ import Home from "./pages/Home";
 import Products from "./pages/Products";
 
 export default function App() {
-
-    const [user,setUser] = useState(null)
+    const alreadyLoggedIn = localStorage.getItem("lastLogin");
+    const [user,setUser] = useState(alreadyLoggedIn && JSON.parse(alreadyLoggedIn))
 
     return (
         <>

@@ -29,7 +29,6 @@ export default function SingUP() {
         setLoading(true);
         request.then(() => {
             history.push("/");
-            setLoading(false);
         });
         request.catch((resp) => {
             if (resp.response.status === 403){
