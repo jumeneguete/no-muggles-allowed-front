@@ -6,7 +6,7 @@ export default function SaveCard ({cardNumber, cardName, cardValidity, setDisabl
     const validity = (new Date(cardValidity).toISOString().slice(0,10))
     const body = {cardNumber, cardName, validity}
     const config = {headers: {"Authorization": `Bearer ${user.token}`}}
-    const promise = axios.post('http://localhost:4000/savecard', body, config)
+    const promise = axios.post(`${process.env.REACT_APP_HOST}/savecard`, body, config)
     promise.then((response) => {
         console.log(response.data)
         setDisabled(false)

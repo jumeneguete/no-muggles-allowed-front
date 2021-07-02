@@ -9,7 +9,7 @@ export default function RenderRegistersAddress ({setAddress, address, user}) {
 
     useEffect(() => {
         const config = {headers: {"Authorization": `Bearer ${user.token}`}}
-        const request = axios.get("http://localhost:4000/useraddress", config)
+        const request = axios.get(`${process.env.REACT_APP_HOST}/useraddress`, config)
         request.then(response => {
             setListOfAddress(response.data)
         })

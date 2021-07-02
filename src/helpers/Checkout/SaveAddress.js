@@ -7,7 +7,7 @@ export default function SaveAddress (props) {
     setDisabled(true)
     const body = {titleAddress, address, CPF}
     const config = {headers: {"Authorization": `Bearer ${user.token}`}}
-    const promise = axios.post('http://localhost:4000/useraddress', body, config)
+    const promise = axios.post(`${process.env.REACT_APP_HOST}/useraddress`, body, config)
     promise.then(() => {
         console.log("Rodou essa porra")
         setDisabled(false)
