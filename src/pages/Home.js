@@ -9,7 +9,7 @@ export default function Home() {
 
     useEffect(() => {
 
-        const result = axios.get("http://localhost:4000/products");
+        const result = axios.get(`${process.env.REACT_APP_HOST}/products`);
         result.then(response => {
             setProducts(response.data);
         })

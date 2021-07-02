@@ -6,6 +6,7 @@ import SingUp from "./pages/SignUp";
 import SingIn from "./pages/SingIn";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
+import Header from "./components/Header";
 
 export default function App() {
     const alreadyLoggedIn = localStorage.getItem("lastLogin");
@@ -20,7 +21,8 @@ export default function App() {
                         <Route path="/home" exact>
                             <Home />
                         </Route>
-                        <Route path="/product/:id" exact>
+                        <Route path="/products/:productId" exact>
+                            <Header />
                             <Products />
                         </Route>
                         <Route path="/sign-up" exact>
