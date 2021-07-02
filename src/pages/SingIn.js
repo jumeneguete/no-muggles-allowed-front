@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import Harry from '../components/assets/Harry.png'
 import UserContext from "../context/UserContext"
 import Description from "../components/Login/Banner";
 import { Container, Fields, Input, Button } from "../components/Login/loginStyle";
@@ -19,7 +18,6 @@ export default function SingIn() {
             return ;
         }
     }, [])
-    
     
     function SigningUp (e){
         e.preventDefault();
@@ -54,7 +52,6 @@ export default function SingIn() {
             <Description></Description>
             <Fields>
                 <form onSubmit={SigningUp}>
-                    <img src={Harry} alt={"Harry"}/> 
                     <h1>Are you a wizard?</h1>
                     <Input 
                         type="email" 

@@ -1,10 +1,12 @@
 import axios from "axios"
 
-export default function UpdateCart (item) {
-    const config = {headers: {"Authorization": `Bearer teste`}}
+export default function UpdateCart ({item,user, setCart, history}) {
+
+    const config = {headers: {"Authorization": `Bearer ${user.token}`}}
     const body = {itemSku: item.sku}
-    const promise = axios.post('http://localhost:4000/delete-item', body, config)
+    const promise = axios.post(`${process.env.REACT_APP_HOST}/delete-item`, body, config)
     promise.then(response => {
-        console.log(response.data)
+        setCart(response.data)
+        if(!response.data.length) return history.push('/cart')
     })
 }

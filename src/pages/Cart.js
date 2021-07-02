@@ -1,18 +1,19 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import axios from "axios"
 import CartList from "../components/Cart/CartList"
 import { Link, useHistory } from "react-router-dom"
 import { Container, Products, Button } from "../styles/cartStyles"
+import UserContext from "../context/UserContext"
 
 export default function Cart () {
 
     const [cart, setCart] = useState()
     const history = useHistory()
-    //const {user, setUser} = useContext(UserContext)
+    const {user} = useContext(UserContext)
 
     useEffect(() => {
-        const config = {headers: {"Authorization": `Bearer test`}}
-        const promise = axios.get('http://localhost:4000/cart', config)
+        const config = { headers: { "Authorization": `Bearer ${user.token}` }}
+        const promise = axios.get(`${process.env.REACT_APP_HOST}/cart`, config)
         promise.then(response => {
             setCart(response.data)
         })
@@ -28,7 +29,7 @@ export default function Cart () {
         <Container>
             <h1>Carrinho</h1>
             {cart
-                ? cart.lenght
+                ? cart.length
                     ?   <>
                         <Products>
                             <CartList cart={cart} setCart={setCart}/>
