@@ -1,12 +1,12 @@
 import { RadioButtonGroup } from 'grommet';
 import styled from 'styled-components';
 
-export default function RenderAddress ({titleAddress, setTitleAddress}) {
+export default function RenderAddress ({titleAddress, setTitleAddress, listOfAddress}) {
     return (
         <>
             <AddressBox
                 name="doc"
-                options={[`${titleAddress}`]}
+                options={listOfAddress}
                 value={titleAddress}
                 onChange={(event) => setTitleAddress(event.target.value)}
             />

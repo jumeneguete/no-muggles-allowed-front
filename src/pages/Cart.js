@@ -33,7 +33,7 @@ export default function Cart () {
                         <Products>
                             <CartList cart={cart} setCart={setCart}/>
                         </Products>
-                        <Button onClick = {finishOrder}><button>Finalizar pedido</button></Button>
+                        <Button onClick={finishOrder}><button>Finalizar pedido</button></Button>
                         </>
                     :   <>
                             <h2>Seu carrinho está vazio</h2>

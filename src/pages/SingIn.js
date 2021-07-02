@@ -43,7 +43,7 @@ export default function SingIn() {
             } else if (resp.response.status === 400){
                 alert('Preencha todos os campos corretamente');
             } else {
-                alert('Houve um erro ao realizar o cadastro, tente novamente');
+                alert('Houve um erro ao realizar o login, tente novamente');
             }
             setLoading(false);
         })
@@ -69,7 +69,7 @@ export default function SingIn() {
                         onChange={(e)=> setPassword(e.target.value)} 
                         value={password} disabled={loading ? true : false}  
                     />
-                    <Button  disabled={loading ? true : false} >Sign Up</Button>
+                    <Button  disabled={loading ? true : false} >Sign In</Button>
                 </form>
                 <Link to={"/sign-up"}><p>First time? Create an account!</p></Link>
             </Fields>
