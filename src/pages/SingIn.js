@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import Harry from '../components/assets/Harry.png'
 import UserContext from "../context/UserContext"
 import Description from "../components/Login/Banner";
 import { Container, Fields, Input, Button } from "../components/Login/loginStyle";
@@ -19,7 +18,6 @@ export default function SingIn() {
             return ;
         }
     }, [])
-    
     
     function SigningUp (e){
         e.preventDefault();
@@ -43,7 +41,7 @@ export default function SingIn() {
             } else if (resp.response.status === 400){
                 alert('Preencha todos os campos corretamente');
             } else {
-                alert('Houve um erro ao realizar o cadastro, tente novamente');
+                alert('Houve um erro ao realizar o login, tente novamente');
             }
             setLoading(false);
         })
@@ -54,7 +52,6 @@ export default function SingIn() {
             <Description></Description>
             <Fields>
                 <form onSubmit={SigningUp}>
-                    <img src={Harry} alt={"Harry"}/> 
                     <h1>Are you a wizard?</h1>
                     <Input 
                         type="email" 
@@ -69,7 +66,7 @@ export default function SingIn() {
                         onChange={(e)=> setPassword(e.target.value)} 
                         value={password} disabled={loading ? true : false}  
                     />
-                    <Button  disabled={loading ? true : false} >Sign Up</Button>
+                    <Button  disabled={loading ? true : false} >Sign In</Button>
                 </form>
                 <Link to={"/sign-up"}><p>First time? Create an account!</p></Link>
             </Fields>

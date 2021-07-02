@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import styled from "styled-components";
 import UserContext from "../context/UserContext"
 import Search from "./Search";
 import { CartOutline } from 'react-ionicons';
@@ -15,10 +14,10 @@ export default function Header() {
     const [total, setTotal] = useState(0);
     const { user, setUser } = useContext(UserContext);
     const history = useHistory();
-    const config = { headers: { Authorization: `Bearer ${user}` } }
+    const config = { headers: { Authorization: `Bearer ${user.token}` } }
 
     useEffect(() => {
-        const request = axios.get(`${process.env.REACT_APP_HOST}/cart`); //colocar o config
+        const request = axios.get(`${process.env.REACT_APP_HOST}/cart`, config);
         request.then(response => {
             setCart(response.data);
             counter(response.data);
@@ -33,9 +32,9 @@ export default function Header() {
         setTotal(sum);
     }
 
-         function logout() { 
-         const config = { headers: { Authorization: `Bearer ${user}` } }
-         axios.post(`${process.env.REACT_APP_HOST}/sign-out`, config);
+        function logout() { 
+        const config = { headers: { Authorization: `Bearer ${user}` } }
+        axios.post(`${process.env.REACT_APP_HOST}/sign-out`, config);
         localStorage.removeItem("lastLogin");
         setUser(null);
         history.push("/");
@@ -45,8 +44,7 @@ export default function Header() {
         <>
             <HeaderStyles>
                 <span><Link to="/">
-                    NO Muggles <br/> Allowed
-                    {/* <img src="assets/img/logo.jpg" title="No Muggles Allowed" alt="No Muggles Allowed" /> */}
+                    <img src="assets/logo.png" title="No Muggles Allowed" alt="No Muggles Allowed" /> 
                     </Link></span>
                 <SearchHeader><Search search={search} setSearch={setSearch} /></SearchHeader>
 
@@ -62,8 +60,8 @@ export default function Header() {
                                 <ExitOutline onClick={logout} color={'#fff'} height="30px" width="30px" />
                             </> :
                             <Link to="/" className="login">
-                                <p>Login for Wizards only </p>
-                                {/* <img src="assets/img/logo.jpg" title="No Muggles Allowed" alt="No Muggles Allowed" /> */}
+                                
+                                <img src="assets/login.png" title="No Muggles Allowed" alt="No Muggles Allowed" />
                                 <LogInOutline color={'#fff'} height="30px" width="30px" />
                             </Link>
                         }

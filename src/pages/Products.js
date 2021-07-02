@@ -12,15 +12,11 @@ export default function Products() {
     const history = useHistory();
 
     useEffect(() => {
-
         const request = axios.get(`${process.env.REACT_APP_HOST}/products/${productId}`);
-
         request.then(response => {
             setProduct(response.data);
-            console.log(response.data)
-        });
-
-    }, []);
+        })
+    }, []); 
 
     function addToCart() {
         if (!user) return setLogged(false);
@@ -33,8 +29,15 @@ export default function Products() {
         const request = axios.post(`${process.env.REACT_APP_HOST}/cart`, body, config)
         request.then(() => {
             history.push("/cart")
-        });
+        })
+        request.catch(e => {
+            console.log(e.response.status)
+            if(e.response.status === 409) {
+                alert("Este item já foi adicionado ao carrinho")
+                return history.push("/cart")
 
+            }
+        });
     }
 
 
@@ -54,4 +57,3 @@ export default function Products() {
         </SingleProduct>
     );
 }
-

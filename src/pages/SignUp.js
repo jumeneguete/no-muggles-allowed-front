@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import Harry from '../components/assets/Harry.png';
 import Description from "../components/Login/Banner";
 import { Container, Field, Input, Button } from "../components/Login/loginStyle";
 
@@ -46,7 +45,6 @@ export default function SingUP() {
             </Description>
             <Field>
                 <form onSubmit={SigningUp}>
-                    <img src={Harry} alt={"Harry"}/>
                     <h1>Are you a wizard?</h1>
 
                     <Input 
