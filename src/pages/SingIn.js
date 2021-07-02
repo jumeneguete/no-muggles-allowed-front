@@ -13,6 +13,14 @@ export default function SingIn() {
     const [loading, setLoading] = useState(false);
     const history = useHistory();
 
+    useEffect(()=>{
+        if (user){
+            history.push("/home");
+            return ;
+        }
+    }, [])
+    
+    
     function SigningUp (e){
         e.preventDefault();
 
@@ -24,7 +32,9 @@ export default function SingIn() {
         const request = axios.post(`${process.env.REACT_APP_HOST}/sign-in`, body);
         setLoading(true);
         request.then((response) => {
-            setUser(response.data)
+            setUser(response.data);
+            const loginSaved = JSON.stringify(response.data);
+            localStorage.setItem("lastLogin", loginSaved);
             history.push("/home");
         });
         request.catch((resp) => {

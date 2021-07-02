@@ -10,8 +10,8 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 
 export default function App() {
-
-    const [user,setUser] = useState(null)
+    const alreadyLoggedIn = localStorage.getItem("lastLogin");
+    const [user,setUser] = useState(alreadyLoggedIn && JSON.parse(alreadyLoggedIn))
 
     return (
         <>
