@@ -3,16 +3,15 @@ import { RadioButtonGroup } from 'grommet';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-export default function RenderRegistersAddress ({setAddress, address}) {
+export default function RenderRegistersAddress ({setAddress, address, user}) {
 
     const [listOfAddress, setListOfAddress] = useState()
 
     useEffect(() => {
-        const config = {headers: {"Authorization": `Bearer test`}}
+        const config = {headers: {"Authorization": `Bearer ${user.token}`}}
         const request = axios.get("http://localhost:4000/useraddress", config)
         request.then(response => {
             setListOfAddress(response.data)
-            console.log(listOfAddress)
         })
     }
     , []);

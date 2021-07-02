@@ -9,6 +9,7 @@ import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Header from "./components/Header";
+import Success from "./pages/Success";
 
 export default function App() {
     const alreadyLoggedIn = localStorage.getItem("lastLogin");
@@ -39,8 +40,8 @@ export default function App() {
                         <Route path="/checkout">
                             <Checkout />
                         </Route>
-                        <Route path="/sucess">
-                            <Cart />
+                        <Route path="/success">
+                            <Success />
                         </Route>
                     </UserContext.Provider>
                 </Switch>

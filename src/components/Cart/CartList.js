@@ -11,7 +11,7 @@ export default function CartList ({cart, setCart}) {
     const [quantity, setQuantity] = useState(1)
     const history = useHistory()
 
-    console.log(cart)
+
     return (
         <Table>
             <Title>

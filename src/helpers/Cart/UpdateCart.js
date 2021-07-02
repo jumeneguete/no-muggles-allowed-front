@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export default function UpdateCart ({item,user, setCart, history}) {
+export default function UpdateCart ({item, user, setCart, history}) {
 
     const config = {headers: {"Authorization": `Bearer ${user.token}`}}
     const body = {itemSku: item.sku}

@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import {Title, BoxButton, MyButton, Container} from "../styles/checkoutFormStyles"
 import RenderAddress from "../components/Checkout/RenderAdress"
 import CheckoutForm from '../components/Checkout/CheckoutForm'
-import saveAddress from '../helpers/Checkout/saveAdress'
-import saveCard from '../helpers/Checkout/saveCard'
+import SaveAddress from '../helpers/Checkout/SaveAddress'
+import SaveCard from '../helpers/Checkout/SaveCard';
 import SelectPayment from '../components/Checkout/SelectPayment';
 import RenderCard from '../components/Checkout/RenderCard';
 import { useHistory } from 'react-router-dom';
 import RenderRegistersAddress from '../components/Checkout/RenderRegistersAddress';
 import axios from 'axios';
+import UserContext from '../context/UserContext';
 
 export default function Checkout () {
 
@@ -20,10 +21,8 @@ export default function Checkout () {
     const [cardValidity, setCardValidity] = useState()
     const [payment, setPayment] = useState()
     const [disabled, setDisabled] = useState(false)
-    const [renderAddress, setRenderAddress] = useState(false)
     const [renderCard, setRenderCard] = useState(false)
     const [registersAddress, setRegistersAddress] = useState(false)
-
     const statesAddress = [setTitleAddress, setAddress, setCPF]
     const statesPayment = [setCardNumber, setCardName, setCardValidity]
 
@@ -34,37 +33,37 @@ export default function Checkout () {
     
     
     const history = useHistory()
+    const {user} = useContext(UserContext)
 
     function finishOrder () {
-        const config = {headers: {"Authorization": `Bearer test`}}
+        const config = {headers: {"Authorization": `Bearer ${user.token}`}}
         const body = {payment}
         axios.post('http://localhost:4000/finish', body, config)
-        history.push('/sucess')
+        history.push('/success')
     }
+
+    useEffect(() => {
+        const config = {headers: {"Authorization": `Bearer ${user.token}`}}
+        const request = axios.get("http://localhost:4000/useraddress", config)
+        request.then(() => {
+            setRegistersAddress(true)
+        })
+    }
+    , []);
 
     return (
         <Container>
             <Title>Dados da entrega</Title>
-            {renderAddress
-            ?   <>
-                <RenderAddress
-                    titleAddress={titleAddress}
-                    setTitleAddress={setTitleAddress}
-                />
-                <BoxButton direction="row" gap="medium">
-                    <MyButton onClick={() => setRenderAddress(false)} primary label="Adicionar novo endereço" />
-                </BoxButton>
-                </>
-            :   registersAddress
+            {registersAddress
                 ?   <>
-                    <RenderRegistersAddress setAddress={setAddress} address={address}/>
+                    <RenderRegistersAddress setAddress={setAddress} address={address} user={user}/>
                     <BoxButton direction="row" gap="medium">
                         <MyButton onClick={() => setRegistersAddress(false)} primary label="Adicionar novo endereço" />
                     </BoxButton>
                     </>
                 :   <>
                     <CheckoutForm
-                        onSubmit={() => saveAddress({titleAddress, address, CPF, setDisabled, setRenderAddress})}
+                        onSubmit={() => SaveAddress({titleAddress, address, CPF, setDisabled, user, setAddress, history})}
                         titles={inputsAddress}
                         names={nameAddress}
                         states={statesAddress}
@@ -91,7 +90,7 @@ export default function Checkout () {
                     </BoxButton>
                     </>
                 :   <CheckoutForm
-                        onSubmit={() => saveCard({cardNumber, cardName, cardValidity, setDisabled, setRenderCard})}
+                        onSubmit={() => SaveCard({cardNumber, cardName, cardValidity, setDisabled, setRenderCard, user})}
                         titles={inputsPayment}
                         names={namePayment}
                         states={statesPayment}
