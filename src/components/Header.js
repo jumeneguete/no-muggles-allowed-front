@@ -50,7 +50,6 @@ export default function Header() {
                     </Link></span>
                 <SearchHeader><Search search={search} setSearch={setSearch} /></SearchHeader>
 
-
                 <div>
                     <CartLog>
                         {user ?
